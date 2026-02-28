@@ -450,37 +450,81 @@
                                 <h4 class="title">Get In Touch</h4>
                                 <p>Fill out this form for booking a consultant advising session.</p>
                             </div>
-                            <form method="POST" action="https://formspree.io/f/xeqyglkl">
-                                <div class="row row--10">
-                                    <div class="form-group col-12">
-                                        <input type="text" name="contact-name" id="contact-name" placeholder="Your name">
-                                    </div>
-                                    <div class="form-group col-12">
-                                        <input type="email" name="contact-email" id="contact-email" placeholder="Enter your email">
-                                    </div>
-                                    <div class="form-group col-12">
-                                        <input type="tel" name="contact-phone" id="contact-phone" placeholder="Phone number">
-                                    </div>
-                                    <div class="form-group col-12">
-                                        <div class="course-dropdown py-3 mt-3 d-flex justify-content-between align-items-center cursor-pointer">
-                                            <input type="text" name="course" class="main-course-P mb-0" placeholder="Select your course">
-                                            <i class="fas fa-sort-down text-muted fs-2"></i>
-                                        </div>
-                                        <div class="hidden-courses mt-4">
-                                            <p class="hidden-cour-p mb-0 text-muted rounded-3 border cursor-pointer mt-3 p-2 px-3">XI + XII INTEGRATED NEET 26-28 (2 Years)</p>
-                                            <p class="hidden-cour-p mb-0 text-muted rounded-3 border cursor-pointer mt-3 p-2 px-3">XII INTEGRATED NEET 26 - 27 ( 1 Year )</p>
-                                            <p class="hidden-cour-p mb-0 text-muted rounded-3 border cursor-pointer mt-3 p-2 px-3">NEET LEADER 26-27 (1 Year)</p>
-                                            <p class="hidden-cour-p mb-0 text-muted rounded-3 border cursor-pointer mt-3 p-2 px-3">XI + XII INTEGRATED JEE (MAINS) 26-28 (2 Years)</p>
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-12">
-                                        <textarea name="contact-message" id="contact-message" cols="30" rows="4" placeholder="Your message"></textarea>
-                                    </div>
-                                    <div class="form-group col-12">
-                                        <button class="rn-btn edu-btn btn-medium submit-btn" name="submit" type="submit">Submit Message <i class="icon-4"></i></button>
-                                    </div>
-                                </div>
-                            </form>
+                           <form method="POST" action="https://formspree.io/f/xeqyglkl" onsubmit="return validateForm()" style="width:100%;">
+
+    <div class="row row--10">
+
+        <div class="form-group col-12">
+            <input type="text" name="contact-name" id="contact-name" placeholder="Your name" required style="width:100%;padding:10px;">
+        </div>
+
+        <div class="form-group col-12">
+            <input type="email" name="contact-email" id="contact-email" placeholder="Enter your email" required style="width:100%;padding:10px;">
+        </div>
+
+        <div class="form-group col-12">
+            <input type="tel" name="contact-phone" id="contact-phone" placeholder="Phone number" required style="width:100%;padding:10px;">
+        </div>
+
+        <div class="form-group col-12">
+            <div class="course-dropdown py-3 mt-3 d-flex justify-content-between align-items-center cursor-pointer">
+                <input type="text" name="course" class="main-course-P mb-0" placeholder="Select your course" required style="width:100%;padding:10px;">
+                <i class="fas fa-sort-down text-muted fs-2"></i>
+            </div>
+        </div>
+
+        <div class="form-group col-12">
+            <textarea name="contact-message" id="contact-message" cols="30" rows="4" placeholder="Your message" required style="width:100%;padding:10px;"></textarea>
+        </div>
+
+        <!-- Terms & Conditions Section -->
+        <div class="form-group col-12" style="background:#f5f5f5;padding:15px;border-radius:6px;margin-top:15px;font-size:14px;line-height:1.6;">
+
+            <p style="margin-bottom:10px;">
+                By clicking SUBMIT Button, you agree to our 
+                <a href="t&c.html" target="_blank" style="color:#0056ff;font-weight:600;text-decoration:underline;">Terms of Service</a> 
+                and that you have read our Privacy Policy.
+            </p>
+
+            <label style="display:flex;align-items:flex-start;gap:8px;cursor:pointer;">
+                <input type="checkbox" id="termsCheckbox" style="margin-top:4px;transform:scale(1.2);">
+                <span>
+                    I consent to receive WhatsApp/SMS/RCS notifications from 
+                    neevacademy.co.in/ for account updates, booking confirmations, 
+                    and service-related information.
+                </span>
+            </label>
+
+            <p id="checkboxError" style="color:red;font-size:13px;margin-top:8px;display:none;">
+                Please accept the Terms & Conditions before submitting.
+            </p>
+
+        </div>
+
+        <div class="form-group col-12" style="margin-top:15px;">
+            <button class="rn-btn edu-btn btn-medium submit-btn" name="submit" type="submit" style="width:100%;padding:12px;font-size:16px;">
+                Submit Message
+            </button>
+        </div>
+
+    </div>
+
+</form>
+
+<script>
+function validateForm() {
+    var checkbox = document.getElementById("termsCheckbox");
+    var errorText = document.getElementById("checkboxError");
+
+    if (!checkbox.checked) {
+        errorText.style.display = "block";
+        return false;
+    }
+
+    errorText.style.display = "none";
+    return true;
+}
+</script>
                             <ul class="shape-group">
                                 <li class="shape-1 scene"><img data-depth="1" src="assets/images/about/shape-13.png" alt="Shape"></li>
                                 <li class="shape-2 scene"><img data-depth="-1" src="assets/images/counterup/shape-02.png" alt="Shape"></li>
@@ -537,11 +581,13 @@ Best Coaching Classes in Bhopal</p>
                                 <h4 class="widget-title">Quick Links</h4>
                                 <div class="inner">
                                     <ul class="footer-link link-hover">
-                                        <li><a href="index.html">Home</a></li>
-                                        <li><a href='about-us.html'>About Us</a></li>
-                                        <li><a href='courses.html'>Courses</a></li>
-                                        <li><a href="index.html#blogs">Blog</a></li>
-                                        <li><a href='contact-us.html'>Contact</a></li>
+                                         <ul class="footer-link link-hover">
+                                        <li><a href="t&c.html">Terms And Conditions</a></li>
+                                        <li><a href='#'>privacy-policy</a></li>
+                                       
+                                         <li><a href='contact-us.html'>Contacts</a>
+                                    </li>
+                                    </ul>
                                     </ul>
                                 </div>
                             </div>
